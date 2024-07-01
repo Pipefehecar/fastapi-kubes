@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-app
+  labels:
+    name: login-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: login-app
+  template:
+    metadata:
+      labels:
+        name: login-app
+    spec:
+      containers:
+      - name: login-app
+        image: fastapi/login
+        imagePullPolicy: Never    # set this to use local docker images.
+        ports:
+        - containerPort: 8001
